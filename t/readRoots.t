@@ -8,7 +8,7 @@ use Test::More tests => 3;
 
 use XRI;
 
-readRoots('XRI/xriroots.xml') if ! scalar %XRI::globals;
+XRI::readRoots('XRI/xriroots.xml') if ! scalar %XRI::globals;
 
 # FIXME: do more to check the format of these entries...
 is( $XRI::globals{'@'}, "http://devat.registry.idcommons.net" );

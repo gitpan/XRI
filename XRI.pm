@@ -9,7 +9,7 @@
 require 5.6.0;
 
 package XRI;
-our $VERSION = '0.2.3';
+our $VERSION = '0.2.4';
 
 use strict;
 
@@ -22,6 +22,9 @@ use LWP::Simple;
 
 use Log::Agent;
 logconfig(-prefix => $0);
+
+# this gets changed during make install
+my $ROOTS = '/etc/xriroots.xml';
 
 my $xrins = 'xri:$r.s/XRIDescriptor';
 
@@ -83,7 +86,7 @@ sub resolveToAuthorityXML {
     # load the roots (global roots could be "precomputed")
     # FIXME: need mechanism to incrementally add to private roots
     #
-    main::readRoots() if ! scalar %globals;
+    readRoots() if ! scalar %globals;
 
     ($authRef, $self->{localAccessURL}) = @$authLocal;
     my $subseg = shift @$authRef;
@@ -92,7 +95,7 @@ sub resolveToAuthorityXML {
     # HACK: we assume there's only one root AuthorityURI
     # HACK: we randomly choose the first XRIAuthority URI
     #
-    my $url = main::isGCS( $subseg ) ? $globals{ $subseg } : $private{ $subseg };
+    my $url = isGCS( $subseg ) ? $globals{ $subseg } : $private{ $subseg };
     if (! defined $url) {
         die "UnknownAuthority: $subseg\n";
     }
@@ -177,18 +180,11 @@ sub getGetURL {
     return $self->{localAccessURL};
 }
 
-package main;
-
-use Log::Agent;
-
 sub isGCS {
     my $char = shift;
 
     return grep { $_ eq $char } @XRI::Parse::GCS_CHARS;
 }
-
-# this gets changed during make install
-my $ROOTS = '/etc/xriroots.xml';
 
 # Read XRI roots file
 # TODO: implement mechanism to add private roots

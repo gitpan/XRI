@@ -14,7 +14,7 @@ use vars qw($roots);
 
 my $xrilib = "$Config{'installsitelib'}/XRI";
 
-$roots = prompt("Where should the roots.xml be installed (default OK)?\n",
+$roots = prompt("Where should the xriroots.xml be installed (default OK)?\n",
                 $xrilib);
 
 rename 'XRI.pm', 'XRI.pm.bak';

@@ -10,6 +10,8 @@
 
 package XRI::Parse;
 
+our $VERSION = 0.1;
+
 use Text::Balanced qw( extract_bracketed );
 use URI::Escape;
 
@@ -189,3 +191,53 @@ sub nextToken {
 }
 
 1;
+__END__
+=head1 NAME
+
+XRI::Descriptor - Parse routines for XRI
+
+=head1 SYNOPSIS
+
+    use XRI:Parse;
+    my $XRI = XRI::Parse->new($xri);
+
+    $escaped = $XRI->escapeURI;
+    $split   = $XRI->splitAuyhLocal;
+
+=head1 ABSTRACT
+
+Parse routines for XRI
+
+=head1 DESCRIPTION
+
+This module provides utilities to parse an XRI string.
+
+=head1 BUG
+
+=over 4
+
+=item *
+
+Clean up escape code
+
+=item *
+
+Strip comments properly
+
+=back
+
+=head1 SEE ALSO
+
+xri(3)
+
+=head1 AUTHOR
+
+Fen Labalme, E<lt>fen@idcommons.netE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2004 Identity Commons
+
+See LICENSE.
+
+=cut

@@ -1,5 +1,14 @@
 -*- change-log -*-
 
+2004-07-02  Fen Labalme  <fen@imagine.comedia.com>
+
+	* release: v0.2.4
+
+2004-06-28  Eugene Eric Kim <eekim@blueoxen.net>
+
+	* XRI.pm: remove spurious setting to package main::
+	* Makefile.PL: properly name xriroots.xml in prompt
+
 2004-06-01  Fen Labalme  <fen@imagine.comedia.com>
 
 	* release: v0.2.3

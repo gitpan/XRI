@@ -7,7 +7,7 @@
 
 use CGI;
 use HTML::Entities;
-use lib "..";
+use lib "..";                           # in case XRI isn't installed yet
 use XRI;
 
 my $q = new CGI;
@@ -49,12 +49,12 @@ if ($q->param) {
     # FIXME: rootsurl is ignored (so is this call to readRoots)
     #
     if ($q->param('rootsurl')) {
-        readRoots($q->param('rootsurl'));
+        XRI::readRoots($q->param('rootsurl'));
         print "<li>Successfully loaded new roots file from ",
               $q->param('rootsurl'), "</li>\n";
     }
     else {
-        readRoots('../XRI/xriroots.xml');     # only for testing
+        XRI::readRoots('../XRI/xriroots.xml');     # for testing
     }
 
     my $XRI = XRI->new($xriv);

@@ -9,7 +9,7 @@ plan tests => scalar keys %tests;
 
 use XRI;
 
-readRoots('XRI/xriroots.xml') if ! scalar %XRI::globals;
+XRI::readRoots('XRI/xriroots.xml') if ! scalar %XRI::globals;
 
 while (my ($name, $test) = each %tests) {
     ($function = $name) =~ s/^([^\d]*)\d*$/$1/;
